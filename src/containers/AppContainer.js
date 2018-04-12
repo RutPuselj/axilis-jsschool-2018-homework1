@@ -23,6 +23,9 @@ class AppContainer extends Component {
 	}
 
 	handleIsDoneToggle = async (todoId, isDone) => {
+		this.setState({
+			isLoading: true
+		});
 		try {
 			await updateTodo('rut', todoId, isDone);
 			this.setState({
@@ -60,6 +63,9 @@ class AppContainer extends Component {
 	};
 
 	handleAddButtonClick = async () => {
+		this.setState({
+			isLoading: true
+		});
 		try {
 			let res = await addTodo('rut', this.state.addText);
 			if (this.state.addText.trim().length < 0) {
@@ -86,6 +92,9 @@ class AppContainer extends Component {
 	};
 
 	handleTrashClicked = async (todoId) => {
+		this.setState({
+			isLoading: true
+		});
 		try {
 			await deleteTodo('rut', todoId);
 			this.setState({
